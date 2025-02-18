@@ -61,5 +61,17 @@ const updateEmployee = async(req, res)=>{
         res.status(500).json({message: "Server error"})
         }
 }
+const deleteEmployee = async(req, res)=>{
+    try{
+        const deleteemployee = await Employee.findByIdAndDelete(req.params.id)
+        res.status(204).send()    
+    }
+    catch(error){
+        console.error("there is an error", error)
+        res.status(500).json({message: "server error"})
 
-module.exports = {createEmployee, getEmployees, singleEmployee, updateEmployee}
+    }
+
+}
+
+module.exports = {createEmployee, getEmployees, singleEmployee, updateEmployee, deleteEmployee}
