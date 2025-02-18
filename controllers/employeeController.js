@@ -26,4 +26,19 @@ const getEmployees = async(req,res)=>
         res.status(500).json({message: 'server error'})
     }
 }
-module.exports = {createEmployee, getEmployees}
+const singleEmployee = async(req, res)=>{
+    try{
+        const employee = await Employee.findById(req.params.id)
+        if(!employee){
+            return res.status(404).json({message: "Employee not found"})
+        }
+        res.status(200).json(employee)
+    }
+    catch(error){
+        console.error("there is an error", error)
+        res.status(500).json({message: "server error"})
+
+    }
+}
+
+module.exports = {createEmployee, getEmployees, singleEmployee}
