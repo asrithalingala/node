@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-app.get('/practice', (req, res) => {
-    res.send("practice makes man perfect");
+app.get('/home', (req, res) => {
+    res.send("Hello! I'm Home page");
+});
+
+app.get('/about', (req, res) => {
+    res.send("Hello! I'm about page");
 });
 
 app.listen(port, () => {
