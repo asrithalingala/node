@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const{MongoClient}= require("mongodb")
+const{MongoClient}= require("mongodb");
+const mongoose= require("mongoose");
 const app = express();
 dotenv.config()
 MongoClient.connect(process.env.MONGO_URL)
@@ -9,9 +10,9 @@ MongoClient.connect(process.env.MONGO_URL)
 })
 .catch((error)=>{
     console.log("error",error)
-})
-const Port = 5000
+});
+const PORT = 5000
 console.log(process.env)
-app.listen(Port,()=>{
-    console.log(`server started and it is running at ${Port}`)
-})
+app.listen(PORT,()=>{
+    console.log(`server started and it is running at ${PORT}`)
+});
